@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  .card {
+    @apply bg-slate-800/50 border border-slate-700/50 rounded-xl;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-xl text-white font-semibold
+           hover:from-indigo-400 hover:to-violet-400 transition-all duration-200
+           shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}
