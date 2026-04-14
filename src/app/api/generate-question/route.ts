@@ -75,7 +75,6 @@ The multiple-choice options should represent different quality levels of answer 
     const stream = client.messages.stream({
       model: 'claude-opus-4-6',
       max_tokens: 2048,
-      thinking: { type: 'adaptive' },
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     })

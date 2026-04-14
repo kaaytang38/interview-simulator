@@ -84,7 +84,6 @@ ${starBlock}
     const stream = client.messages.stream({
       model: 'claude-opus-4-6',
       max_tokens: 3000,
-      thinking: { type: 'adaptive' },
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     })
