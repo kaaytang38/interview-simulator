@@ -21,15 +21,16 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'Only http and https URLs are supported.' }, { status: 400 })
     }
 
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 15_000)
     const response = await fetch(url, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (compatible; InterviewSimulator/1.0; +https://interview-simulator.vercel.app)',
         Accept: 'text/html,application/xhtml+xml',
       },
-      // @ts-expect-error — Node 18 fetch signal
-      signal: AbortSignal.timeout(15_000),
-    })
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout))
 
     if (!response.ok) {
       return Response.json(
